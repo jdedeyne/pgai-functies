@@ -1,0 +1,25 @@
+filmpjes met oplossingen
+- nieuw project aanmaken OK
+- files erin OK
+- debuggen uitleggen
+- test window uitleggen OK
+- string[i] uitleggen
+- unittest uitleggen (lezen/begrijpen - nog niet zelf maken)
+- len(array) en len(string)
+- ord en chr
+- array.append()
+
+theorie video?
+complexiteit neemt toe naarmate software groeit door meer features/functionaliteit (anders zou er gene reden zijn om te groeien)
+die complexiteit moeten we leren beheersen
+CONTROLE!!!
+dit kan door
+- herhaling te fnuiken (met een lus, maar nu ook met functies)
+  identiek herhaling is duidelijk en hoe ze aan te pakken met lussen/functies ook
+  bijna identiek herhaling duwen we in de richting van identieke door de invoering van variabele ... dit worden de controlevariabelen in onze lussne of de parameters in onze functies
+- abstractie neemt toe door functies (waarmee we complexiteit beter begrijpen - op een hoger niveau)
+- expressiviteit neemt toe door goede naamgeven van variabelen en functies
+- over dat functies het wat aanbiedne terwijl ze het hoe wegabstraheren
+
+fout -> varaibele buiten functie is wel leesbaar maar niet schrijfbaar
+ in de video is dat wellicht omdat de functie opgeroepen wordt voordat de varaibele geïnitialiseerd wordt
