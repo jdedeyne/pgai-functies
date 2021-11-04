@@ -9,7 +9,7 @@ class opgave1tester(TestCase):
         self.assertEqual(3, ggd(15, 12))
        
 
-"""     def testKeerOm(self):
+    def testKeerOm(self):
         self.assertEqual(-43021, keerOm(-1203400))
 
     def testFaculteit(self):
@@ -38,5 +38,5 @@ class opgave1tester(TestCase):
         self.assertEqual(0, variatie(-7, -6))
         self.assertEqual(0, variatie(-7, 6))
         self.assertEqual(0, variatie(7, -6))
-        self.assertEqual(1, variatie(0, 0)) """
+        self.assertEqual(1, variatie(0, 0)) 
         
