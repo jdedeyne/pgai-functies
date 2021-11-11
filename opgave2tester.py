@@ -69,3 +69,29 @@ class opgave2tester(TestCase):
         self.assertEqual((0,-1), move(0,0, 'D', 1))
         self.assertEqual((-1,0), move(0,0, 'L', 1))
         self.assertEqual((1,0), move(0,0, 'R', 1))
+
+    def testHasUpper(self):
+        self.assertEqual(False, hasUpper('qsdfq'))
+        self.assertEqual(True, hasUpper('Qmlkjml'))
+
+    def testHasLower(self):
+        self.assertEqual(False, hasLower('AERAEZ'))
+        self.assertEqual(True, hasLower('321321a'))
+
+    def testHasDigit(self):
+        self.assertEqual(False, hasDigit('AERAEZ'))
+        self.assertEqual(True, hasDigit('321321a'))
+
+    def testHasSpecialleke(self):
+        self.assertEqual(False, hasSpecialleke('AZEARZEA'))
+        self.assertEqual(True, hasSpecialleke('QSDFQSD$'))
+
+    def testValidatePassword(self):
+        self.assertEqual(True, isValidPassword('ABd1234@1'))
+        self.assertEqual(False, isValidPassword('a F1#'))
+        self.assertEqual(False, isValidPassword('12345678'))
+        self.assertEqual(True, isValidPassword('aB$1234'))
+        self.assertEqual(False, isValidPassword('9z5D@'))
+        self.assertEqual(True, isValidPassword('1a2B3#'))
+        self.assertEqual(True, isValidPassword('Abcd1234#xyz'))
+        self.assertEqual(False, isValidPassword('a$1d6Tt33xsq#9'))

@@ -239,11 +239,79 @@ def opgave4():
     print('punt',x,y)
     print('afstand', int((x**2+y**2)**(1/2)))
 
+def hasUpper(str):
+    ret = False
+    i=0
+    while i<len(str):
+        if isUpper(str[i]):
+            return True
+        i+=1
+    return ret
+
+def hasLower(str):
+    ret = False
+    i=0
+    while i<len(str):
+        if isLower(str[i]):
+            return True
+        i+=1
+    return ret
+
+def hasDigit(str):
+    ret = False
+    i=0
+    while i<len(str):
+        if isDigit(str[i]):
+            return True
+        i+=1
+    return ret
+
+def hasSpecialleke(str):
+    ret = False
+    i=0
+    while i<len(str):
+        if str[i] in ['$','#','@']:
+            return True
+        i+=1
+    return ret
+
+def hasSpatie(str):
+    ret = False
+    i=0
+    while i<len(str):
+        if str[i] in [' ']:
+            return True
+        i+=1
+    return ret
+
+def isValidPassword(str):
+    
+    if not hasUpper(str):
+        return False
+    if not hasLower(str):
+        return False
+    if not hasDigit(str):
+        return False
+    if not hasSpecialleke(str):
+        return False
+    if len(str) < 6:
+        return False
+    if len(str) >12:
+        return False
+    if hasSpatie(str):
+        return False
+    
+    return True
+
 def opgave5():
     print('begin opgave 5')
+    if isValidPassword(input()):
+        print('correct')
+    else:
+        print('niet correct')
 
 #opgave1()
 #opgave2()
 #opgave3()
 #opgave4()
-opgave5()
+#opgave5()
