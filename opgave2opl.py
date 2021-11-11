@@ -305,7 +305,7 @@ def isValidPassword(str):
 
 def opgave5():
     print('begin opgave 5')
-    if isValidPassword(input()):
+    if isValidPassword(input('test hier je paswoord:')):
         print('correct')
     else:
         print('niet correct')
