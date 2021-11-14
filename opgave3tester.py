@@ -27,6 +27,9 @@ class opgave3tester(TestCase):
     def testIsPalindrome(self):
         self.assertEqual(False,isPalindrome(''))
         self.assertEqual(True, isPalindrome('aibohphobia'))
+        self.assertEqual(True, isPalindrome('abba'))
+        self.assertEqual(True, isPalindrome('aboba'))
+        self.assertEqual(False, isPalindrome('abka'))
 
     def testFind(self):
         self.assertEqual(4,find('bal', 'voetbalbal'))
@@ -55,7 +58,7 @@ class opgave3tester(TestCase):
         self.assertEqual('hohohoho', replace('haha', 'hoho', 'hahaha'))
         # geen overlap -> self.assertEqual('hohoha', replace('haha', 'hoho', 'hahaha'))'
 
-    def testInDutch(self):
+    def testInDutchThreeDigit(self):
         self.assertEqual('nul', inDutchThreeDigit(0))
         self.assertEqual('negen', inDutchThreeDigit(9))
         self.assertEqual('achttien', inDutchThreeDigit(18))
@@ -66,7 +69,10 @@ class opgave3tester(TestCase):
         self.assertEqual('driehonderddrieëndertig', inDutchThreeDigit(333))
         self.assertEqual('driehonderd', inDutchThreeDigit(300))
         self.assertEqual('driehonderdenzeven', inDutchThreeDigit(307))
+        
+    def testInDutch(self):
         self.assertEqual('zevenhonderdeenentachtig miljoen vierhonderdtweeënvijftigduizend driehonderdeenentwintig', inDutch(781452321))
+        self.assertEqual('een miljoen duizend een', inDutch(1001001))
 
     def testDecompose(self):
         self.assertEqual([1, 0, 2, 0, 3], decompose(30201))
