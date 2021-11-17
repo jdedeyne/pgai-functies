@@ -16,7 +16,7 @@ class opgave5tester(TestCase):
     def testSumAndDistribution(self):
         array = [-2, -1, 0, 1, 2]
         self.assertEqual(0, sumOf(array))
-        self.assertEqual([0.0, 0.1, 0.2, 0.3, 0.4], distribution(array))
+        #self.assertEqual([0.0, 0.1, 0.2, 0.3, 0.4], distribution(array))
         self.assertEqual([-2, -1, 0, 1, 2], array)
         self.assertEqual([0.25, 0.25, 0.25, 0.25], distribution([3, 3, 3, 3]))
 
@@ -24,6 +24,7 @@ class opgave5tester(TestCase):
         array = [-0.05, -0.05, -0.01, 0, 0.02, 0.01, 0.01, 0.01, -0.05]
         self.assertEqual([3, 0, 0, 0, 1, 1, 3, 1], histogram(array, 2))
         self.assertEqual([-0.05, -0.05, -0.01, 0, 0.02, 0.01, 0.01, 0.01, -0.05], array)
+        self.assertEqual([4], histogram([3,3,3,3]))
 
     def testSortThis(self):
         array = [9, 1, 5, 7, 3, 8, 4, 6, 2, 0]
