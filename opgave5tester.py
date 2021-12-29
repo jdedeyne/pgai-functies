@@ -16,7 +16,7 @@ class opgave5tester(TestCase):
     def testSumAndDistribution(self):
         array = [-2, -1, 0, 1, 2]
         self.assertEqual(0, sumOf(array))
-        #self.assertEqual([0.0, 0.1, 0.2, 0.3, 0.4], distribution(array))
+        self.assertEqual([0.0, 0.1, 0.2, 0.3, 0.4], distribution(array))
         self.assertEqual([-2, -1, 0, 1, 2], array)
         self.assertEqual([0.25, 0.25, 0.25, 0.25], distribution([3, 3, 3, 3]))
 

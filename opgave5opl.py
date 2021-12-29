@@ -35,17 +35,13 @@ def sumOf(array):
     return ret
 
 def distribution(array):
-    temp = copyOf(array)
-    ret = histogram(array)
+    ret = copyOf(array)
+    ret = shiftToPositive(ret)
     tot = sumOf(ret)
     i=0
     while i<len(ret):
         ret[i]=ret[i]/tot
         i+=1
-    i=0
-    while i<len(temp):
-        ret[i]=ret[i]/tot
-        i+=1    
     return ret
 
 def histogram(array, precision=0):
