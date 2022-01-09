@@ -25,18 +25,17 @@ from random import *
 geheim = randint(0,100) #genereert een willekeurig getal tussen 0 en 100 
 getal = int(input('Geef een getal [0-100]: ')) 
 aantalIngelezenGetallen = 1 
-while aantalIngelezenGetallen < 10:
-    if getal < 0:
-       print (f"Spel afgebroken in beurt {aantalIngelezenGetallen} ") 
-    if getal == geheim:
-        print(f"Gewonnen in {aantalIngelezenGetallen} beurten ")
-        aantalIngelezenGetallen = 99
+
+while aantalIngelezenGetallen < 10 and getal >0 and getal != geheim:
+    if getal < geheim:
+        getal = int(input('Geef een hoger getal: ')) 
     else:
-        if getal < geheim:
-            getal = int(input('Geef een hoger getal: ')) 
-        else:
-            getal = int(input('Geef een lager getal: ')) 
-    aantalIngelezenGetallen += 1
-    
-if aantalIngelezenGetallen == 10:
-    print("Verloren")
+        getal = int(input('Geef een lager getal: '))     
+    aantalIngelezenGetallen +=1
+
+if getal == geheim:
+    print('Gewonnen in ' + str(aantalIngelezenGetallen) + ' beurten ')
+elif getal < 0:
+    print('Spel afgebroken in beurt ' + str(aantalIngelezenGetallen))
+else:
+    print('Verloren')

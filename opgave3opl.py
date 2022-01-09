@@ -23,15 +23,11 @@ def substr(checkstr, start, length):
     return ret
 
 def reverse(checkstr):
-    i=0
-    lengte = len(checkstr)
     ret = ''
-    if lengte == 0:
-        return ''
-    while i< lengte:
-        ret += checkstr[lengte-1-i]
-        ## increase counter
-        i+=1
+
+    for i in range(0, len(checkstr)):
+        ret += checkstr[len(checkstr) - 1 - i]
+
     return ret
 
 def isPalindrome(checkstr):
@@ -148,7 +144,7 @@ def doubleDigitInDutch(digit, hashundred=False, hasthousand=False):
     return ret
 
 
-def inDutchThreeDigit(digit, hasthousand=False):
+def threeDigitInDutch(digit, hasthousand=False):
     dig = decompose(digit)
     ret = NotImplemented
     if digit < 100:
@@ -169,10 +165,10 @@ def inDutch(digit):
     if rest > 1000000:
         miljoenen = digit//1000000
         rest = digit%1000000
-        ret = inDutchThreeDigit(miljoenen) + ' miljoen'
+        ret = threeDigitInDutch(miljoenen) + ' miljoen'
     if rest > 1000:
         duizenden = rest//1000
         rest = rest%1000
-        ret = ret + ' ' + inDutchThreeDigit(duizenden, True) + 'duizend'
-    ret = ret + ' ' + inDutchThreeDigit(rest, False)
+        ret = ret + ' ' + threeDigitInDutch(duizenden, True) + 'duizend'
+    ret = ret + ' ' + threeDigitInDutch(rest, False)
     return ret

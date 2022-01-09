@@ -1,128 +1,70 @@
-def line(length, fill = True, indentation = 0,  char = '*'):
-    ret = ''
-    space =  ' ' * indentation if indentation > 0 else ''
+def line(length, fill=True, indentation=0,  char='*'):
     cont = ''
-    i=0
-    while i<length:        
-        if i>0 and i<length-1:
+    for i in range(0, indentation):
+        cont += ' '
+    for i in range(0, length):
+        if 0 < i < length - 1:
             if fill:
                 cont += char
             else:
                 cont += ' '
         else:
-            cont += char        
-        i+=1
-    ret = space + cont
-    return ret
+            cont += char
+    return cont
 
-def rectangle(width, height, fill = True, indentation = 0,  char = '*'):
-    h=0
+def shape(indentstart, indentstep, widthstart, widthstep, height, fill, char):
     ret = ''
-    while h<height:
-        if h==0 or h==height-1:
-            #boven en onderlijn
-            ret += line(width, fill=True, indentation= indentation, char = char)
-        else:
-            ret += line(width, fill=fill, indentation=indentation, char = char) 
-        if h<height-1:
+    for h in range(1, height + 1):
+        ret += line(widthstart, fill=fill or (h == 1 or h == height), indentation=indentstart, char=char)
+        if h < height:
             ret += '\r\n'
-        h+=1
+        indentstart += indentstep
+        widthstart += widthstep
     return ret
 
-
-def square(size, fill = True, indentation = 0,  char = '*'):
-    ret = rectangle(size, size, fill= fill, indentation=indentation, char=char)
-    return ret
+def rectangle(width, height, fill=True, indentation=0,  char='*'):
+    return shape(indentation, 0, width, 0, height, fill, char)
 
 
-def parallelogram(width, height, fill = True, indentation = 0,  char = '*', step = -1):
-    ret = ''
-    h=0
-    i=indentation
+def square(size, fill=True, indentation=0,  char='*'):
+    return rectangle(size, size, fill=fill, indentation=indentation, char=char)
+
+
+def parallelogram(width, height, fill=True, indentation=0, char='*', step=-1):
     if step < 0:
-        i-=(step*(height-1))
+        indentation -= (step*(height-1))
+    return shape(indentation, step, width, 0, height, fill, char)
 
-    while h<height:
-        print(h,i)        
-        if h==0 or h==height-1:
-            ret += line(width, fill=True, indentation = i, char=char)
-        else:
-            ret += line(width, fill=fill, indentation = i, char=char)
-        if h<height-1:
-            ret += '\r\n'
-        i+=step
-        h+=1
+
+def rightAngledTriangle(width, fill=True, indentation=0,  char='*', step=0, alignRight=False, fromTopToBottom=True):
+    ret = ''
+    if fromTopToBottom:
+        if alignRight:
+            indentation = indentation + width - 1
+            step = -1
+        ret += shape(indentation, step, 1, 1, width, fill, char)
+    else:
+        ret += shape(indentation, step, width, -1, width, fill, char)
+
     return ret
 
-def triangle(width, fill = True, indentation = 0,  char = '*', step = 0, alignRight = False, fromTopToBottom = True, rightAngled = True):
+def nonRightAngledTriangle(width, fill=True, indentation=0,  char='*', step=0, alignRight=False, fromTopToBottom=True):
     ret = ''
-    h=1
-    i=indentation
-    s=step
-    if rightAngled:
-        if fromTopToBottom:
-            if alignRight:
-                i=i+width-1
-                s=-1            
-            while h < width+1:        
-                if h==1 or h==width:
-                    ret += line(h, fill=True, indentation = i, char=char)
-                else:
-                    ret += line(h, fill=fill, indentation = i, char=char)
-                if h<width:
-                    ret += '\r\n'
-                i += s
-                h+=1
-        else:
-            if alignRight:
-                s=step
-            h=width
-            while h > 0:        
-                if h==1 or h==width:
-                    ret += line(h, fill=True, indentation = i, char=char)
-                else:
-                    ret += line(h, fill=fill, indentation = i, char=char)
-                if h>1:
-                    ret += '\r\n'
-                i += s
-                h-=1
+    hmax = int((width + (width % 2)) / 2)
+    w = 2 - (width % 2)
+    if fromTopToBottom:
+        indentation = indentation + hmax - 1
+        ret += shape(indentation, -1, w, 2, hmax, fill, char)
     else:
-        if width%2==1:
-            hmax=int((width+1)/2)
-            w=1
-        else:
-            hmax=int(width/2)
-            w=2
+        w = width
+        ret += shape(indentation, 1, w, -2, hmax, fill, char)
+    return ret
 
-        if fromTopToBottom:
-            h=1
-            
-            i = i + hmax - 1
-            #gelijkbenig, alignRight negeren
 
-            while h <= hmax:        
-                if h==1 or h==hmax:
-                    ret += line(w, fill=True, indentation = i, char=char)
-                else:
-                    ret += line(w, fill=fill, indentation = i, char=char)
-                if h<hmax:
-                    ret += '\r\n'
-                i -= 1
-                h+=1
-                w+=2
-        else:
-            h=1
-            w=width
-            #gelijkbenig, alignRight negeren
-
-            while h <= hmax:        
-                if h==1 or h==hmax:
-                    ret += line(w, fill=True, indentation = i, char=char)
-                else:
-                    ret += line(w, fill=fill, indentation = i, char=char)
-                if h<hmax:
-                    ret += '\r\n'
-                i += 1
-                h += 1
-                w -= 2
+def triangle(width, fill=True, indentation=0,  char='*', step=0, alignRight=False, fromTopToBottom=True, rightAngled=True):
+    ret = ''
+    if rightAngled:
+        ret = rightAngledTriangle(width, fill, indentation,  char, step, alignRight, fromTopToBottom)
+    else:
+        ret = nonRightAngledTriangle(width, fill, indentation, char, step, alignRight, fromTopToBottom)
     return ret

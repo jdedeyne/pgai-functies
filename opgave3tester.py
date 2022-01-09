@@ -59,16 +59,16 @@ class opgave3tester(TestCase):
         # geen overlap -> self.assertEqual('hohoha', replace('haha', 'hoho', 'hahaha'))'
 
     def testInDutchThreeDigit(self):
-        self.assertEqual('nul', inDutchThreeDigit(0))
-        self.assertEqual('negen', inDutchThreeDigit(9))
-        self.assertEqual('achttien', inDutchThreeDigit(18))
-        self.assertEqual('zevenenvijftig', inDutchThreeDigit(57))
-        self.assertEqual('tweeëntwintig', inDutchThreeDigit(22))
-        self.assertEqual('honderdtien', inDutchThreeDigit(110))
-        self.assertEqual('driehonderdvijftien', inDutchThreeDigit(315))
-        self.assertEqual('driehonderddrieëndertig', inDutchThreeDigit(333))
-        self.assertEqual('driehonderd', inDutchThreeDigit(300))
-        self.assertEqual('driehonderdenzeven', inDutchThreeDigit(307))
+        self.assertEqual('nul', threeDigitInDutch(0))
+        self.assertEqual('negen', threeDigitInDutch(9))
+        self.assertEqual('achttien', threeDigitInDutch(18))
+        self.assertEqual('zevenenvijftig', threeDigitInDutch(57))
+        self.assertEqual('tweeëntwintig', threeDigitInDutch(22))
+        self.assertEqual('honderdtien', threeDigitInDutch(110))
+        self.assertEqual('driehonderdvijftien', threeDigitInDutch(315))
+        self.assertEqual('driehonderddrieëndertig', threeDigitInDutch(333))
+        self.assertEqual('driehonderd', threeDigitInDutch(300))
+        self.assertEqual('driehonderdenzeven', threeDigitInDutch(307))
         
     def testInDutch(self):
         self.assertEqual('zevenhonderdeenentachtig miljoen vierhonderdtweeënvijftigduizend driehonderdeenentwintig', inDutch(781452321))

@@ -7,9 +7,11 @@ class opgave1tester(TestCase):
     def testGgd(self):
         self.assertEqual(13, ggd(273, 1430))
         self.assertEqual(3, ggd(15, 12))
+        self.assertEqual(3, ggd(12, 15))
        
 
     def testKeerOm(self):
+        self.assertEqual(12, keerOm(21))
         self.assertEqual(-43021, keerOm(-1203400))
 
     def testFaculteit(self):
@@ -34,9 +36,10 @@ class opgave1tester(TestCase):
         self.assertEqual(7, variatie(7, 1))
         self.assertEqual(5040, variatie(7, 6))
         self.assertEqual(1500000000, variatie(1500000000, 1))
+        self.assertEqual(1500000000*1499999999, variatie(1500000000, 2))
         self.assertEqual(0, variatie(6, 7))
         self.assertEqual(0, variatie(-7, -6))
         self.assertEqual(0, variatie(-7, 6))
         self.assertEqual(0, variatie(7, -6))
-        self.assertEqual(1, variatie(0, 0)) 
+        self.assertEqual(1, variatie(0, 0))
         
